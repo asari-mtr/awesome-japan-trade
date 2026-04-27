@@ -68,6 +68,7 @@
 - [プライシング理論](./docs/pricing_theory.md) : デリバティブの価格決定理論（ブラック・ショールズ等）
 - [ポートフォリオ理論](./docs/portfolio_theory.md) : 分散投資と最適化（MPT, CAPM等）
 - [リスク管理](./docs/risk_management.md) : VaRやグリークスを用いたリスク測定
+- [米国マクロ指標の影響](./docs/us_macro_impact.md) : 米金利・雇用統計と日本株の相関
 
 ---
 
