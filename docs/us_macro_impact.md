@@ -15,7 +15,7 @@
 ## 2. 米雇用統計 (US Employment Statistics)
 非農業部門雇用者数 (NFP) と失業率は、米国景気の「体温計」として世界的なリスクオン・リスクオフを左右します。
 
-- **発表時期**: 通常は月初（第1金曜日であることが多い）に発表されますが、祝日や政府スケジュールにより変動します。正確な日程は [BLS Release Calendar](https://www.bls.gov/schedule/news_release/home.htm) を確認する必要があります。
+- **発表時期**: 通常は月初（第1金曜日であることが多い）に発表されますが、祝日や政府スケジュールにより変動します。正確な日程は [BLS Employment Situation Schedule](https://www.bls.gov/schedule/news_release/empsit.htm) を確認する必要があります。
 - **市場の反応**: 景気の強弱に加え、インフレ懸念や金利見通しとの兼ね合いで複雑な動きを見せ、ボラティリティが最大化するイベントです。
 
 ## 3. センチメント・予測指標
