@@ -32,6 +32,10 @@
 | [リスク管理](./docs/risk_management.html) | VaR、ES、Greeks、ストレステスト、ポジションサイズ |
 | [市場構造と高度な分析手法](./docs/market_structure.html) | 建玉、GEX、裁定取引、投資家部門別、SQ |
 | [米国マクロ指標の影響](./docs/us_macro_impact.html) | 米金利、雇用統計、CPI/PCE、センチメント指標 |
+| [レジーム別オプション戦略](./docs/option_strategies.html) | IVレジーム、CDS/PDS、コンドル、カレンダー、SQ接近時の戦略 |
+| [ボラティリティ・サーフェス](./docs/volatility_surface.html) | Smile/Skew、Term Structure、Forward Vol、Event Vol、VRP |
+| [オプション戦略別Greeks](./docs/option_strategy_greeks.html) | 戦略ごとのDelta/Gamma/Vega/Thetaと隠れたリスク |
+| [オプション・バックテスト](./docs/option_backtesting.html) | IV surface、約定仮定、流動性、SQ処理、バックテストバイアス |
 
 ---
 
@@ -106,6 +110,10 @@
 - [リスク管理](./docs/risk_management.html) : VaRやグリークスを用いたリスク測定
 - [市場構造と高度な分析手法](./docs/market_structure.html) : 建玉構造、GEX、裁定取引等
 - [米国マクロ指標の影響](./docs/us_macro_impact.html) : 米金利・雇用統計と日本株の相関
+- [レジーム別オプション戦略](./docs/option_strategies.html) : IVやSQレジームに応じたスプレッド戦略
+- [ボラティリティ・サーフェス](./docs/volatility_surface.html) : Smile/Skew、Term Structure、Forward Vol、Event Vol
+- [オプション戦略別Greeks](./docs/option_strategy_greeks.html) : 戦略ごとのGreek profile
+- [オプション・バックテスト](./docs/option_backtesting.html) : 約定仮定、IV補間、SQ処理、バイアス管理
 
 ---
 
