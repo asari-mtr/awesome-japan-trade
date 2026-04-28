@@ -1,3 +1,9 @@
+---
+layout: default
+title: 市場構造と高度な分析手法
+nav_order: 4
+---
+
 # 市場構造と高度な分析手法 (Market Structure & Advanced Analysis)
 
 日本市場、特に先物・オプション市場においてプロの投資家が注目する高度な分析概念です。

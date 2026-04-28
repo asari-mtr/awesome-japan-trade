@@ -1,12 +1,22 @@
 title: Awesome Japan Trade Resources
 description: Low-cost data sources and theory notes for Japanese markets.
-theme: jekyll-theme-minimal
-show_downloads: false
+remote_theme: just-the-docs/just-the-docs
+
+url: https://asari-mtr.github.io
+baseurl: /awesome-japan-trade
+
+color_scheme: light
+search_enabled: true
+heading_anchors: true
+
+aux_links:
+  GitHub Repository: https://github.com/asari-mtr/awesome-japan-trade
 
 github:
   is_project_page: true
 
 plugins:
+  - jekyll-remote-theme
   - jekyll-relative-links
 
 relative_links:

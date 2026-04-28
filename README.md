@@ -27,11 +27,11 @@
 
 | ドキュメント | 内容 |
 | :--- | :--- |
-| [プライシング理論](./docs/pricing_theory.md) | デリバティブ価格、Put-Call Parity、IV、Smile/Skew、Term Structure |
-| [ポートフォリオ理論](./docs/portfolio_theory.md) | MPT、CAPM、Sharpe Ratio、Implied Move、IV Move |
-| [リスク管理](./docs/risk_management.md) | VaR、ES、Greeks、ストレステスト、ポジションサイズ |
-| [市場構造と高度な分析手法](./docs/market_structure.md) | 建玉、GEX、裁定取引、投資家部門別、SQ |
-| [米国マクロ指標の影響](./docs/us_macro_impact.md) | 米金利、雇用統計、CPI/PCE、センチメント指標 |
+| [プライシング理論](./docs/pricing_theory.html) | デリバティブ価格、Put-Call Parity、IV、Smile/Skew、Term Structure |
+| [ポートフォリオ理論](./docs/portfolio_theory.html) | MPT、CAPM、Sharpe Ratio、Implied Move、IV Move |
+| [リスク管理](./docs/risk_management.html) | VaR、ES、Greeks、ストレステスト、ポジションサイズ |
+| [市場構造と高度な分析手法](./docs/market_structure.html) | 建玉、GEX、裁定取引、投資家部門別、SQ |
+| [米国マクロ指標の影響](./docs/us_macro_impact.html) | 米金利、雇用統計、CPI/PCE、センチメント指標 |
 
 ---
 
@@ -101,11 +101,11 @@
 
 金融工学やリスク管理の基礎知識。
 
-- [プライシング理論](./docs/pricing_theory.md) : デリバティブの価格決定理論（ブラック・ショールズ等）
-- [ポートフォリオ理論](./docs/portfolio_theory.md) : 分散投資と最適化（MPT, CAPM等）
-- [リスク管理](./docs/risk_management.md) : VaRやグリークスを用いたリスク測定
-- [市場構造と高度な分析手法](./docs/market_structure.md) : 建玉構造、GEX、裁定取引等
-- [米国マクロ指標の影響](./docs/us_macro_impact.md) : 米金利・雇用統計と日本株の相関
+- [プライシング理論](./docs/pricing_theory.html) : デリバティブの価格決定理論（ブラック・ショールズ等）
+- [ポートフォリオ理論](./docs/portfolio_theory.html) : 分散投資と最適化（MPT, CAPM等）
+- [リスク管理](./docs/risk_management.html) : VaRやグリークスを用いたリスク測定
+- [市場構造と高度な分析手法](./docs/market_structure.html) : 建玉構造、GEX、裁定取引等
+- [米国マクロ指標の影響](./docs/us_macro_impact.html) : 米金利・雇用統計と日本株の相関
 
 ---
 

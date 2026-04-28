@@ -1,3 +1,9 @@
+---
+layout: default
+title: プライシング理論
+nav_order: 1
+---
+
 # プライシング理論 (Pricing Theory)
 
 デリバティブ（金融派生商品）の適正価格を決定するための理論的枠組み。

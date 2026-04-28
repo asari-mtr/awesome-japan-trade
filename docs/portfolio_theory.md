@@ -1,3 +1,9 @@
+---
+layout: default
+title: ポートフォリオ理論
+nav_order: 2
+---
+
 # ポートフォリオ理論 (Portfolio Theory)
 
 複数の資産を組み合わせることで、リスクを抑えつつリターンを最大化するための理論。

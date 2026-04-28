@@ -1,3 +1,9 @@
+---
+layout: default
+title: リスク管理
+nav_order: 3
+---
+
 # リスク管理 (Risk Management)
 
 予期せぬ損失から資産を守るための測定と制御の手法。
