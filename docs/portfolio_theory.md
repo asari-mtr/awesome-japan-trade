@@ -45,6 +45,16 @@
     - $\text{満期までの1σ変動率} \approx IV \times \sqrt{\frac{DTE}{252}}$
     - $\text{ストラドル由来の1日変動率} \approx \frac{\text{ストラドル変動率} / 0.798}{\sqrt{DTE}}$
 
+### IV MoveによるSQレンジ推定
+IV Moveは、対象限月のIVからSQまでの想定レンジを推定する方法。プット・コール・パリティとは別物で、パリティはCall/Put/先物/権利行使価格の無裁定関係、IV Moveは満期までの変動幅の推定に使う。
+
+- **ATM IVを使う方法**: $\text{Move}_{1\sigma} = F \times IV_{ATM} \times \sqrt{\frac{DTE}{252}}$
+- **Call/Put IVを分ける方法**: 上方向はATMまたはOTM Call IV、下方向はATMまたはOTM Put IVを使う。Skewが強い場合、上下対称レンジより実態に近い。
+- **1σレンジ**: $\text{下限} \approx F - \text{Move}_{put,1\sigma}$、$\text{上限} \approx F + \text{Move}_{call,1\sigma}$
+- **2σレンジ**: $\text{下限} \approx F - 2 \times \text{Move}_{put,1\sigma}$、$\text{上限} \approx F + 2 \times \text{Move}_{call,1\sigma}$
+- **日数の扱い**: 年率IVを使う場合、暦日なら365、営業日なら252で年率換算を統一する。日本市場では休場日とSQ日までの実残存時間を明記する。
+- **注意**: IVはリスク中立分布上の価格であり、実現確率そのものではない。Smile/Skew、イベントIV、流動性、金利、配当、先物価格のズレを確認する。
+
 ### リスク管理への応用
 - **ボラティリティ・スキュー**: プットとコールの価格差を見ることで、市場が上下どちらの「突き抜け（ファットテイル）」をより警戒しているかを判断する。
 - **損益分岐点の把握**: ストラドル価格を超える動きは、オプション買いが利益化しやすい領域に入ったことを示す。ただし「異常事態」とは限らず、イベント前後のIV低下や流動性も含めて評価する。
