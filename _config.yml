@@ -1,0 +1,18 @@
+title: Awesome Japan Trade Resources
+description: Low-cost data sources and theory notes for Japanese markets.
+theme: jekyll-theme-minimal
+show_downloads: false
+
+github:
+  is_project_page: true
+
+plugins:
+  - jekyll-relative-links
+
+relative_links:
+  enabled: true
+  collections: true
+
+include:
+  - README.md
+
