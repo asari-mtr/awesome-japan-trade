@@ -100,67 +100,70 @@
 
 ### 株式・ETF
 
-| 名称 | 区分 | API | 特徴 |
+| 名称 | 区分 | 取得形式 | 特徴 |
 | :--- | :--- | :---: | :--- |
-| [J-Quants API](https://jquants.com/) | 有料(2,178円〜) | ○ | 上述の通り。個人開発のデファクト。 |
-| [バフェット・コード](https://www.buffett-code.com/) | 無料 / 有料 | △ | 財務、KPI、類似企業比較。Web UIが非常に使いやすい。 |
-| [株探 (Kabutan)](https://kabutan.jp/) | 無料 / 有料 | × | 決算速報、業績修正、テーマ株。 |
-| [EDINET](https://disclosure2.edinet-fsa.go.jp/) | 無料 | ○ | 法定開示書類の宝庫。XBRLデータの取得元。 |
-| [JPX：プログラム売買](https://www.jpx.co.jp/markets/statistics-equities/program/index.html) | 無料 | × | 裁定取引の状況。将来の需給予測に重要。 |
+| [J-Quants API](https://jquants.com/) | 無料 / 有料 | REST API | JPX総研の公式API。株価、財務、上場銘柄、投資部門別、指数、オプション等をプラン別に取得。 |
+| [バフェット・コード](https://www.buffett-code.com/) | 無料 / 有料 | Web / CSV等 | 財務、KPI、類似企業比較。Web UIが非常に使いやすい。 |
+| [株探 (Kabutan)](https://kabutan.jp/) | 無料 / 有料 | Web | 決算速報、業績修正、テーマ株。スクレイピング前提の利用は規約確認が必要。 |
+| [EDINET](https://disclosure2.edinet-fsa.go.jp/) | 無料 | REST API / XBRL / PDF | 法定開示書類の宝庫。XBRLデータの取得元。 |
+| [JPX：プログラム売買](https://www.jpx.co.jp/markets/statistics-equities/program/index.html) | 無料 | CSV / XLS等 | 裁定取引・プログラム売買の状況。REST APIではないが、機械取得可能なファイルが公開される。 |
 
 ### オプション・先物
 
-| 名称 | 区分 | API | 特徴 |
+| 名称 | 区分 | 取得形式 | 特徴 |
 | :--- | :--- | :---: | :--- |
-| [JPX：先物・オプション（取引高）](https://www.jpx.co.jp/markets/derivatives/participant-volume/) | 無料 | × | 大阪取引所(OSE)の投資家別取引高。 |
-| [JPX：部門別売買動向](https://www.jpx.co.jp/markets/statistics-derivatives/sector/) | 無料 | × | 海外投資家等の売買越状況。週次更新。 |
+| [JPX：先物・オプション（取引高）](https://www.jpx.co.jp/markets/derivatives/participant-volume/) | 無料 | CSV / XLS等 | 大阪取引所(OSE)の取引高。REST APIではないが、公開ファイルとして取得可能。 |
+| [JPX：部門別売買動向](https://www.jpx.co.jp/markets/statistics-derivatives/sector/) | 無料 | CSV / XLS | 海外投資家等の売買越状況と建玉。週次更新。2026年4月以降の新フォーマットもCSV/Excelサンプルあり。 |
+| [JPX：清算数値一覧](https://www.jpx.co.jp/markets/derivatives/settlement-price/index.html) | 無料 | CSV | 先物・オプションの清算値、理論価格、IV等。営業日夕方にCSV公開。 |
+| [JPX：最終清算数値（SQ）](https://www.jpx.co.jp/markets/derivatives/special-quotation/index.html) | 無料 | Web / CSV等 | 日経225、TOPIX等のSQ値とヒストリカルデータ。 |
 | [日経平均VI (ボラティリティ)](https://indexes.nikkei.co.jp/nkave/index/profile?idx=nk225vi) | 無料 | CSV | 投資家の恐怖心理を数値化。過去CSVが取得可能。 |
-| [JSCC：証拠金情報（SPAN/VaR）](https://www.jpx.co.jp/jscc/seisan/sakimono/shokokin_seido/shokokin.html) | 無料 | × | 先物・オプションの維持証拠金計算パラメータ。 |
-| [TradingView (OSEデータ)](https://jp.tradingview.com/) | 無料 / 有料 | ○ | 大阪取引所(OSE)の先物データを高機能チャートで分析。 |
+| [JSCC：証拠金情報（SPAN/VaR）](https://www.jpx.co.jp/jscc/seisan/sakimono/shokokin_seido/shokokin.html) | 無料 | CSV / XLS等 | 先物・オプションの維持証拠金計算パラメータ。 |
+| [TradingView (OSEデータ)](https://jp.tradingview.com/) | 無料 / 有料 | Web / API | 大阪取引所(OSE)の先物データを高機能チャートで分析。API利用条件はプランと規約に依存。 |
 
 
 ### 投資信託
-| 名称 | 区分 | API | 特徴 |
+| 名称 | 区分 | 取得形式 | 特徴 |
 | :--- | :--- | :---: | :--- |
-| [Wealth Advisor](https://www.wealthadvisor.co.jp/) | 無料 | × | 投信格付け、コスト、パフォーマンス比較。 |
-| [投信協会](https://www.toushin.or.jp/search/fund/) | 無料 | × | 全投資信託の目論見書・運用報告書。 |
+| [Wealth Advisor](https://www.wealthadvisor.co.jp/) | 無料 | Web | 投信格付け、コスト、パフォーマンス比較。 |
+| [投信協会](https://www.toushin.or.jp/search/fund/) | 無料 | Web / PDF | 全投資信託の目論見書・運用報告書。 |
 
 ### 国債・金利
-| 名称 | 区分 | API | 特徴 |
+| 名称 | 区分 | 取得形式 | 特徴 |
 | :--- | :--- | :---: | :--- |
 | [財務省：国債金利](https://www.mof.go.jp/jgbs/reference/interest_rate/index.htm) | 無料 | CSV | 毎日の金利（イールドカーブ）データ。 |
-| [日本銀行：統計データ](https://www.stat-search.boj.or.jp/) | 無料 | ○ | 政策金利、マネタリーベース等のマクロデータ。 |
+| [日本銀行：統計データ](https://www.stat-search.boj.or.jp/) | 無料 | Web / CSV | 政策金利、マネタリーベース等のマクロデータ。 |
 
 ### 暗号資産 (Crypto)
-| 名称 | 区分 | API | 特徴 |
+| 名称 | 区分 | 取得形式 | 特徴 |
 | :--- | :--- | :---: | :--- |
-| [bitFlyer Lightning API](https://lightning.bitflyer.com/docs) | 無料 | ○ | 国内最大手。板情報、歩み値。 |
-| [GMOコイン API](https://coin.z.com/jp/member/help/api/) | 無料 | ○ | 取引・レート取得。 |
+| [bitFlyer Lightning API](https://lightning.bitflyer.com/docs) | 無料 | REST / WebSocket | 国内大手。板情報、歩み値、注文API。 |
+| [GMOコイン API](https://coin.z.com/jp/member/help/api/) | 無料 | REST / WebSocket | 取引・レート取得。 |
+| [Polymarket](https://docs.polymarket.com/) | 無料 | REST / WebSocket / SDK | 予測市場。Gamma APIで市場メタデータ、Data APIで取引・ポジション等、CLOB APIで板・価格・注文を扱う。日本居住者の利用可否や規制・利用規約は事前確認が必要。 |
 
 ### 不動産・J-REIT
-| 名称 | 区分 | API | 特徴 |
+| 名称 | 区分 | 取得形式 | 特徴 |
 | :--- | :--- | :---: | :--- |
-| [J-REIT.jp](https://www.j-reit.jp/) | 無料 | × | 利回り、NAV、物件情報を網羅。 |
-| [不動産情報ライブラリ](https://www.reinfolib.mlit.go.jp/) | 無料 | ○ | 国交省による成約価格データ（土地総合情報システムの後継）。APIも提供。 |
-| [不動産価格指数 (e-Stat)](https://www.e-stat.go.jp/stat-search/files?page=1&toukei=00600611&tstat=000001091216) | 無料 | ○ | 全国・地域別の住宅、商業用不動産の価格動向。 |
+| [J-REIT.jp](https://www.j-reit.jp/) | 無料 | Web | 利回り、NAV、物件情報を網羅。 |
+| [不動産情報ライブラリ](https://www.reinfolib.mlit.go.jp/) | 無料 | REST API / CSV | 国交省による成約価格データ（土地総合情報システムの後継）。APIも提供。 |
+| [不動産価格指数 (e-Stat)](https://www.e-stat.go.jp/stat-search/files?page=1&toukei=00600611&tstat=000001091216) | 無料 | REST API / CSV | 全国・地域別の住宅、商業用不動産の価格動向。 |
 
 ### 為替 (FX) & マクロ統計
-| 名称 | 区分 | API | 特徴 |
+| 名称 | 区分 | 取得形式 | 特徴 |
 | :--- | :--- | :---: | :--- |
-| [e-Stat](https://www.e-stat.go.jp/) | 無料 | ○ | 日本の全統計データ（人口、物価等）。 |
-| [OANDA Lab](https://www.oanda.jp/lab-education/api/) | 無料(条件有) | ○ | オーダーブック（未決済注文）などの分析。 |
+| [e-Stat](https://www.e-stat.go.jp/) | 無料 | REST API / CSV | 日本の全統計データ（人口、物価等）。 |
+| [OANDA Lab](https://www.oanda.jp/lab-education/api/) | 無料(条件有) | REST API | オーダーブック（未決済注文）などの分析。 |
 
 ## コモディティ・オルタナティブ
-| 名称 | 区分 | API | 特徴 |
+| 名称 | 区分 | 取得形式 | 特徴 |
 | :--- | :--- | :---: | :--- |
-| [田中貴金属](https://gold.tanaka.co.jp/refresh/index.php) | 無料 | × | 国内金価格の基準。 |
-| [Funds](https://funds.jp/) | 無料 | × | 貸付型クラウドファンディング（社債代替）。 |
+| [田中貴金属](https://gold.tanaka.co.jp/refresh/index.php) | 無料 | Web | 国内金価格の基準。 |
+| [Funds](https://funds.jp/) | 無料 | Web | 貸付型クラウドファンディング（社債代替）。 |
 
 ## 総合・便利ツール
-| 名称 | 区分 | API | 特徴 |
+| 名称 | 区分 | 取得形式 | 特徴 |
 | :--- | :--- | :---: | :--- |
-| [Google Finance 関数](https://support.google.com/docs/answer/3093281) | 無料 | ○ | スプレッドシート上での簡易データ取得。 |
-| [MoneyForward ME](https://moneyforward.com/) | 無料 / 有料 | × | 資産の一元管理。 |
+| [Google Finance 関数](https://support.google.com/docs/answer/3093281) | 無料 | Spreadsheet関数 | スプレッドシート上での簡易データ取得。 |
+| [MoneyForward ME](https://moneyforward.com/) | 無料 / 有料 | Web / App | 資産の一元管理。 |
 
 ---
 
@@ -170,6 +173,7 @@
 - **株式**: `J-Quants API` (公式)、または Pythonの `yfinance` 等。
 - **不動産**: `不動産情報ライブラリ` のAPIを利用。
 - **暗号資産**: `bitFlyer` または `GMOコイン` のAPI。
+- **予測市場**: `Polymarket` のGamma/Data/CLOB APIで市場メタデータ、価格、板、取引データを取得。
 - **統計**: `e-Stat API` を利用してマクロ経済指標を取得。
 
 ### 無料で視覚的に分析したい
