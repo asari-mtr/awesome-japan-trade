@@ -68,6 +68,7 @@
 - [プライシング理論](./docs/pricing_theory.md) : デリバティブの価格決定理論（ブラック・ショールズ等）
 - [ポートフォリオ理論](./docs/portfolio_theory.md) : 分散投資と最適化（MPT, CAPM等）
 - [リスク管理](./docs/risk_management.md) : VaRやグリークスを用いたリスク測定
+- [市場構造と高度な分析手法](./docs/market_structure.md) : 建玉構造、GEX、裁定取引等
 - [米国マクロ指標の影響](./docs/us_macro_impact.md) : 米金利・雇用統計と日本株の相関
 
 ---
@@ -82,14 +83,18 @@
 | [バフェット・コード](https://www.buffett-code.com/) | 無料 / 有料 | △ | 財務、KPI、類似企業比較。Web UIが非常に使いやすい。 |
 | [株探 (Kabutan)](https://kabutan.jp/) | 無料 / 有料 | × | 決算速報、業績修正、テーマ株。 |
 | [EDINET](https://disclosure2.edinet-fsa.go.jp/) | 無料 | ○ | 法定開示書類の宝庫。XBRLデータの取得元。 |
+| [JPX：プログラム売買](https://www.jpx.co.jp/markets/statistics-equities/program/index.html) | 無料 | × | 裁定取引の状況。将来の需給予測に重要。 |
 
 ### オプション・先物
 
 | 名称 | 区分 | API | 特徴 |
 | :--- | :--- | :---: | :--- |
 | [JPX：先物・オプション（取引高）](https://www.jpx.co.jp/markets/derivatives/participant-volume/) | 無料 | × | 大阪取引所(OSE)の投資家別取引高。 |
+| [JPX：部門別売買動向](https://www.jpx.co.jp/markets/statistics-derivatives/sector/) | 無料 | × | 海外投資家等の売買越状況。週次更新。 |
+| [日経平均VI (ボラティリティ)](https://indexes.nikkei.co.jp/nkave/index/profile?idx=nk225vi) | 無料 | CSV | 投資家の恐怖心理を数値化。過去CSVが取得可能。 |
 | [JSCC：証拠金情報（SPAN/VaR）](https://www.jpx.co.jp/jscc/seisan/sakimono/shokokin_seido/shokokin.html) | 無料 | × | 先物・オプションの維持証拠金計算パラメータ。 |
 | [TradingView (OSEデータ)](https://jp.tradingview.com/) | 無料 / 有料 | ○ | 大阪取引所(OSE)の先物データを高機能チャートで分析。 |
+
 
 ### 投資信託
 | 名称 | 区分 | API | 特徴 |
