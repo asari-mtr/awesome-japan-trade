@@ -26,10 +26,12 @@
 | **CME FedWatch** | 市場が織り込んでいる将来の政策金利（利上げ・利下げ）の確率。 | [CME FedWatch Tool](https://www.cmegroup.com/markets/interest-rates/cme-fedwatch-tool.html) |
 | **NAAIM Exposure Index** | 米国のアクティブ運用マネージャーの平均的な株式投資比率。センチメントの把握に。 | [NAAIM Exposure Index](https://www.naaim.org/programs/naaim-exposure-index/) |
 | **FRED (St. Louis Fed)** | 米国の金利、CPI、雇用統計等のヒストリカルデータ。 | [FRED Web](https://fred.stlouisfed.org/) |
+| **OGE Financial Disclosures** | 米国政府高官（大統領等）の資産公開情報。債券や株式の売買動向を把握可能。 | [OGE.gov - Open Data](https://www.oge.gov/web/oge.nsf/Open+Data) |
 
 ## 4. 主要な参照ソース
 - **Investing.com**: [経済指標カレンダー](https://jp.investing.com/economic-calendar/)。予測と実績の乖離確認。
 - **BLS (米国労働省統計局)**: [BLS.gov](https://www.bls.gov/)。雇用統計の一次情報。
+- **U.S. Office of Government Ethics (OGE)**: [Official Financial Disclosures](https://www.oge.gov/web/oge.nsf/Financial+Disclosure)。公職者の資産報告書（Form 278等）の閲覧。
 
 ---
 
