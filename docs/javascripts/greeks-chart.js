@@ -142,12 +142,12 @@
   }
 
   function bindRange(input, valueLabel, formatter, onChange) {
-    const update = () => {
-      valueLabel.textContent = formatter(input.value);
+    const syncLabel = () => { valueLabel.textContent = formatter(input.value); };
+    syncLabel();
+    input.addEventListener("input", () => {
+      syncLabel();
       onChange();
-    };
-    input.addEventListener("input", update);
-    update();
+    });
   }
 
   function initChart(root) {
@@ -198,6 +198,7 @@
     };
 
     const redraw = () => {
+      if (!window.Plotly) return;
       const series = computeSeries(state);
       window.Plotly.react(plotDiv, traces(series), plotLayout(state), {
         displaylogo: false,
