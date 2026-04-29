@@ -40,3 +40,14 @@ nav_order: 8
 5. Thetaで日々の時間価値損益を確認する。
 6. Charm/Vanna/VolgaでSQ接近やIV急変時の非線形リスクを確認する。
 
+## 4. Delta / Theta インタラクティブ図
+
+Black-Scholesに基づくDeltaとThetaを、原資産価格 $S$ の関数としてプロットする。スライダーで権利行使価格 $K$、IV $\sigma$、満期までの日数 (DTE) を動かすと曲線が即時更新される。Theta は1日あたりの変化量（カレンダー日換算）。
+
+- ATM 近辺で **Gamma** が最大になるため、Delta 曲線はそこで最も急峻に立ち上がる。
+- DTE を短くすると、ATM 付近の Delta が階段関数に近づき、Theta（負側）は深くなる。
+- IV を上げると Delta 曲線は緩やかになり、Theta は全体的に深くなる。
+
+<div data-greeks-chart></div>
+
+<small>※ 金利 $r = 0.5\%$、配当利回り $q = 0$ の固定。日経225オプションを念頭に既定値を $K=35{,}000$、$\sigma=20\%$、$\text{DTE}=30$ にしてある。</small>
