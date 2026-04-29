@@ -19,11 +19,14 @@ nav_order: 2
 
 ## 3. CAPM (Capital Asset Pricing Model)
 個別資産の期待リターンを市場全体のリスクとの関係性で説明するモデル。
-- **公式**: `E[R_i] = R_f + β_i × (E[R_m] - R_f)`
-    - `R_f`: リスクフリーレート
-    - `β`: 市場に対する感応度
-    - `E[R_m] - R_f`: 市場リスクプレミアム
-- **ベータ β**: 市場全体の変動に対して、その資産がどれだけ動くかを示す指標。
+- **公式**:
+
+    $$E[R_i] = R_f + \beta_i \, (E[R_m] - R_f)$$
+
+    - $R_f$: リスクフリーレート
+    - $\beta_i$: 市場に対する感応度
+    - $E[R_m] - R_f$: 市場リスクプレミアム
+- **ベータ $\beta$**: 市場全体の変動に対して、その資産がどれだけ動くかを示す指標。
 
 ## 4. シャープ・レシオ (Sharpe Ratio)
 リスク1単位あたりに得られた超過リターンを示す。
@@ -40,24 +43,35 @@ nav_order: 2
 
 ### ストラドル価格を用いた簡易推定
 アット・ザ・マネー (ATM) のコールとプットの価格を合算することで、満期（SQ日）までの期待変動幅を求める。
-- **計算式**: `Implied Move = ATM Call Price + ATM Put Price`
-- **統計的意味**: ストラドル価格は「市場が支払っている絶対値変動の価格」であり、厳密な1σそのものではない。正規分布を仮定すると `E[|X|] ≈ 0.798σ` なので、1標準偏差に換算するなら概算で `σ ≈ Straddle / 0.798` と見る。
+- **計算式**:
+
+    $$\text{Implied Move} = C_{\text{ATM}} + P_{\text{ATM}}$$
+
+- **統計的意味**: ストラドル価格は「市場が支払っている絶対値変動の価格」であり、厳密な $1\sigma$ そのものではない。正規分布を仮定すると $E[|X|] \approx 0.798\,\sigma$ なので、1標準偏差に換算するなら概算で $\sigma \approx \text{Straddle} / 0.798$ と見る。
 - **実務上の解釈**: 現在価格 ± ストラドル価格は損益分岐点の目安であり、確率68.3%の範囲と断定しない。IV、スキュー、金利、配当、残存日数、板の厚さを合わせて確認する。
 
 ### 1日あたりの期待変動幅
 インプライド・ボラティリティ (IV) を用いて、1営業日あたりの変動目安を算出する。
-- **計算式**: `1日の予想変動率 = IV / sqrt(252)`
+- **計算式**:
+
+    $$\sigma_{1d} = \frac{\mathrm{IV}}{\sqrt{252}}$$
+
 - **DTE (Days to Expiration) を用いた標準化**:
-    - `満期までの1σ変動率 ≈ IV × sqrt(DTE / 252)`
-    - `ストラドル由来の1日変動率 ≈ (ストラドル変動率 / 0.798) / sqrt(DTE)`
+
+    $$\sigma_{\text{to expiry}} \approx \mathrm{IV} \cdot \sqrt{\frac{\mathrm{DTE}}{252}}$$
+
+    $$\sigma_{1d}^{\text{straddle}} \approx \frac{\sigma_{\text{straddle}} / 0.798}{\sqrt{\mathrm{DTE}}}$$
 
 ### IV MoveによるSQレンジ推定
 IV Moveは、対象限月のIVからSQまでの想定レンジを推定する方法。プット・コール・パリティとは別物で、パリティはCall/Put/先物/権利行使価格の無裁定関係、IV Moveは満期までの変動幅の推定に使う。
 
-- **ATM IVを使う方法**: `Move_1σ = F × IV_ATM × sqrt(DTE / 252)`
+- **ATM IVを使う方法**:
+
+    $$\text{Move}_{1\sigma} = F \cdot \mathrm{IV}_{\text{ATM}} \cdot \sqrt{\frac{\mathrm{DTE}}{252}}$$
+
 - **Call/Put IVを分ける方法**: 上方向はATMまたはOTM Call IV、下方向はATMまたはOTM Put IVを使う。Skewが強い場合、上下対称レンジより実態に近い。
-- **1σレンジ**: `下限 ≈ F - Move_put,1σ`、`上限 ≈ F + Move_call,1σ`
-- **2σレンジ**: `下限 ≈ F - 2 × Move_put,1σ`、`上限 ≈ F + 2 × Move_call,1σ`
+- **$1\sigma$ レンジ**: 下限 $\approx F - \text{Move}_{\text{put},\,1\sigma}$、上限 $\approx F + \text{Move}_{\text{call},\,1\sigma}$
+- **$2\sigma$ レンジ**: 下限 $\approx F - 2 \cdot \text{Move}_{\text{put},\,1\sigma}$、上限 $\approx F + 2 \cdot \text{Move}_{\text{call},\,1\sigma}$
 - **日数の扱い**: 年率IVを使う場合、暦日なら365、営業日なら252で年率換算を統一する。日本市場では休場日とSQ日までの実残存時間を明記する。
 - **注意**: IVはリスク中立分布上の価格であり、実現確率そのものではない。Smile/Skew、イベントIV、流動性、金利、配当、先物価格のズレを確認する。
 
