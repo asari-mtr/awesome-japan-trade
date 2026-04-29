@@ -1,0 +1,210 @@
+# Awesome Japan Trade Resources
+
+日本の金融市場（株、先物、国債、BTC、不動産、為替など）に関する、無料または個人が低コスト（月額2,000円程度）で利用できるツール、API、公開情報の一覧です。
+
+> 注記: 料金、取得可能データ、API仕様は変更されます。実装・契約前には各公式サイトの最新情報を確認してください。本リポジトリでは、投資判断に使う前のデータ検証観点も併記します。
+
+## ドキュメント一覧
+
+| ドキュメント | 内容 |
+| :--- | :--- |
+| [プライシング理論](pricing_theory.md) | デリバティブ価格、Put-Call Parity、IV、Smile/Skew、Term Structure |
+| [ポートフォリオ理論](portfolio_theory.md) | MPT、CAPM、Sharpe Ratio、Implied Move、IV Move |
+| [リスク管理](risk_management.md) | VaR、ES、Greeks、ストレステスト、ポジションサイズ |
+| [市場構造と高度な分析手法](market_structure.md) | 建玉、GEX、裁定取引、投資家部門別、SQ |
+| [米国マクロ指標の影響](us_macro_impact.md) | 米金利、雇用統計、CPI/PCE、センチメント指標 |
+| [レジーム別オプション戦略](option_strategies.md) | IVレジーム、CDS/PDS、コンドル、カレンダー、SQ接近時の戦略 |
+| [ボラティリティ・サーフェス](volatility_surface.md) | Smile/Skew、Term Structure、Forward Vol、Event Vol、VRP |
+| [オプション戦略別Greeks](option_strategy_greeks.md) | 戦略ごとのDelta/Gamma/Vega/Thetaと隠れたリスク |
+| [オプション・バックテスト](option_backtesting.md) | IV surface、約定仮定、流動性、SQ処理、バックテストバイアス |
+| [米国社債・短期金利・イールドカーブ](us_credit_rates.md) | 社債、信用スプレッド、短期金利、10Y-2Y、イールドカーブ |
+| [投資スタイル](investment_styles.md) | モメンタム、バリュー、クオンツ、ファクター投資 |
+| [金融サイクルと景気循環](financial_cycles.md) | 金利、債券、不動産、株式、先進国/新興国/日本の循環 |
+
+---
+
+## 主要データソース深掘り（株式）
+
+データ分析や自動取引システムを構築する際に核となるソースの詳細比較です。
+
+### 1. J-Quants API (JPX総研)
+日本取引所グループ公式。個人投資家が最も手軽に「生データ」をAPI取得できる手段。
+
+| プラン | 取得可能な主なデータ | 期間 / 制限 |
+| :--- | :--- | :--- |
+| **Free** | 銘柄一覧、株価四本値、財務情報、決算発表予定日など | 直近約2年強のデータが中心 |
+| **Light** | Free対象データ + 取引カレンダー、投資部門別情報、TOPIX四本値など | 約5年前まで |
+| **Standard**| Light対象データ + 指数四本値、日経225オプション四本値、信用・空売り関連など | 約10年前まで |
+| **Premium** | Standard対象データ + 先物・オプション四本値、配当金情報、財務諸表(BS/PL/CF)など | 2008年以降など、データ種別により異なる |
+
+- **形式**: REST API (JSON)
+- **強み**: 東証公式。分割・併合調整後の株価が取れるため、バックテストの基礎データに向く。
+- **注意点**: 株価調整は主に株式分割・併合が対象。配当再投資込みのトータルリターン指数ではないため、長期検証では配当・上場廃止・指数入替の扱いを別途定義する。
+- **料金**: プラン料金は変更されるため、契約前に公式サイトで確認する。
+
+### 2. EDINET (金融庁)
+上場企業の法定開示書類（有価証券報告書など）のデータベース。
+
+| カテゴリ | 取得可能な主なデータ | 形式 |
+| :--- | :--- | :--- |
+| **財務諸表** | B/S, P/L, C/F, 純資産変動計算書 | XBRL / PDF |
+| **非財務情報** |経営方針、事業のリスク、従業員の状況 | テキスト / PDF |
+| **提出書類** | 有価証券報告書、四半期報告書、大量保有報告書 | API / Web |
+
+- **コスト**: 完全無料
+- **強み**: **XBRL形式**をパースすれば、数千社の財務比較を自動化できる。APIで書類一覧とバイナリが取得可能。
+- **注意点**: 会計基準、勘定科目、連結・単体、期間コンテキストが混在する。単純なタグ名一致では誤集計しやすいため、正規化ルールとサンプル検算が必須。
+
+### 3. TDnet / 適時開示情報 (東証)
+「決算短信」や「業績予想の修正」など、株価に直結する情報の速報。
+
+| 取得データ | 内容 | 速度 |
+| :--- | :--- | :--- |
+| **決算短信** | 直近四半期の売上・利益、配当、次期予想 | リアルタイム |
+| **PR情報** | 新サービス発表、業務提携、自己株買い | リアルタイム |
+| **コーポレートガバナンス**| 役員構成、支配株主の状況 | 随時 |
+
+- **コスト**: 無料（Web閲覧）、APIは商用が主（個人はJ-Quants Standard等を経由）。
+- **強み**: 投資判断に最も影響を与える「イベント」を最速でキャッチできる。
+- **注意点**: PDF本文、XBRL、HTML、訂正開示の関係を追跡する必要がある。イベント検出では「初回開示」と「訂正後数値」を分けて保存する。
+
+---
+
+## データ利用時の精度チェック
+
+バックテストや定量分析で最低限確認すべき観点です。
+
+| 観点 | 確認内容 | 典型的な失敗 |
+| :--- | :--- | :--- |
+| **時点整合性** | そのデータが当時いつ入手可能だったか | 決算発表前に財務データを使う先読みバイアス |
+| **調整株価** | 分割・併合・配当・上場廃止の扱い | 生株価と調整株価を混ぜてリターンを計算 |
+| **欠損値** | 休場、売買停止、出来高ゼロ、NULLの区別 | NULLを0として扱い、リターンや流動性を歪める |
+| **ユニバース** | 現存銘柄だけでなく過去銘柄を含むか | 生存者バイアスにより成績が過大評価される |
+| **約定可能性** | 売買代金、板厚、制限値幅、空売り規制 | 終値で大量約定できる前提にする |
+| **コスト** | 手数料、税金、スリッページ、借株料 | 小さいエッジが取引コストで消える |
+
+---
+
+## 金融数学・理論
+
+金融工学やリスク管理の基礎知識。
+
+- [プライシング理論](pricing_theory.md) : デリバティブの価格決定理論（ブラック・ショールズ等）
+- [ポートフォリオ理論](portfolio_theory.md) : 分散投資と最適化（MPT, CAPM等）
+- [リスク管理](risk_management.md) : VaRやグリークスを用いたリスク測定
+- [市場構造と高度な分析手法](market_structure.md) : 建玉構造、GEX、裁定取引等
+- [米国マクロ指標の影響](us_macro_impact.md) : 米金利・雇用統計と日本株の相関
+- [レジーム別オプション戦略](option_strategies.md) : IVやSQレジームに応じたスプレッド戦略
+- [ボラティリティ・サーフェス](volatility_surface.md) : Smile/Skew、Term Structure、Forward Vol、Event Vol
+- [オプション戦略別Greeks](option_strategy_greeks.md) : 戦略ごとのGreek profile
+- [オプション・バックテスト](option_backtesting.md) : 約定仮定、IV補間、SQ処理、バイアス管理
+- [米国社債・短期金利・イールドカーブ](us_credit_rates.md) : 社債スプレッド、短期金利、10Y-2Yと市場への影響
+- [投資スタイル](investment_styles.md) : モメンタム、バリュー、クオンツ、ファクター投資
+- [金融サイクルと景気循環](financial_cycles.md) : 金利、債券、不動産、株式、国別サイクルのズレ
+
+---
+
+## アセット別リソース一覧
+
+### 株式・ETF
+
+| 名称 | 区分 | 取得形式 | 特徴 |
+| :--- | :--- | :---: | :--- |
+| [J-Quants API](https://jquants.com/) | 無料 / 有料 | REST API | JPX総研の公式API。株価、財務、上場銘柄、投資部門別、指数、オプション等をプラン別に取得。 |
+| [バフェット・コード](https://www.buffett-code.com/) | 無料 / 有料 | Web / CSV等 | 財務、KPI、類似企業比較。Web UIが非常に使いやすい。 |
+| [株探 (Kabutan)](https://kabutan.jp/) | 無料 / 有料 | Web | 決算速報、業績修正、テーマ株。スクレイピング前提の利用は規約確認が必要。 |
+| [EDINET](https://disclosure2.edinet-fsa.go.jp/) | 無料 | REST API / XBRL / PDF | 法定開示書類の宝庫。XBRLデータの取得元。 |
+| [JPX：プログラム売買](https://www.jpx.co.jp/markets/statistics-equities/program/index.html) | 無料 | CSV / XLS等 | 裁定取引・プログラム売買の状況。REST APIではないが、機械取得可能なファイルが公開される。 |
+
+### オプション・先物
+
+| 名称 | 区分 | 取得形式 | 特徴 |
+| :--- | :--- | :---: | :--- |
+| [JPX：先物・オプション（取引高）](https://www.jpx.co.jp/markets/derivatives/participant-volume/) | 無料 | CSV / XLS等 | 大阪取引所(OSE)の取引高。REST APIではないが、公開ファイルとして取得可能。 |
+| [JPX：部門別売買動向](https://www.jpx.co.jp/markets/statistics-derivatives/sector/) | 無料 | CSV / XLS | 海外投資家等の売買越状況と建玉。週次更新。2026年4月以降の新フォーマットもCSV/Excelサンプルあり。 |
+| [JPX：清算数値一覧](https://www.jpx.co.jp/markets/derivatives/settlement-price/index.html) | 無料 | CSV | 先物・オプションの清算値、理論価格、IV等。営業日夕方にCSV公開。 |
+| [JPX：最終清算数値（SQ）](https://www.jpx.co.jp/markets/derivatives/special-quotation/index.html) | 無料 | Web / CSV等 | 日経225、TOPIX等のSQ値とヒストリカルデータ。 |
+| [日経平均VI (ボラティリティ)](https://indexes.nikkei.co.jp/nkave/index/profile?idx=nk225vi) | 無料 | CSV | 投資家の恐怖心理を数値化。過去CSVが取得可能。 |
+| [JSCC：証拠金情報（SPAN/VaR）](https://www.jpx.co.jp/jscc/seisan/sakimono/shokokin_seido/shokokin.html) | 無料 | CSV / XLS等 | 先物・オプションの維持証拠金計算パラメータ。 |
+| [TradingView (OSEデータ)](https://jp.tradingview.com/) | 無料 / 有料 | Web / API | 大阪取引所(OSE)の先物データを高機能チャートで分析。API利用条件はプランと規約に依存。 |
+
+
+### 投資信託
+
+| 名称 | 区分 | 取得形式 | 特徴 |
+| :--- | :--- | :---: | :--- |
+| [Wealth Advisor](https://www.wealthadvisor.co.jp/) | 無料 | Web | 投信格付け、コスト、パフォーマンス比較。 |
+| [投信協会](https://www.toushin.or.jp/search/fund/) | 無料 | Web / PDF | 全投資信託の目論見書・運用報告書。 |
+
+### 国債・金利
+
+| 名称 | 区分 | 取得形式 | 特徴 |
+| :--- | :--- | :---: | :--- |
+| [財務省：国債金利](https://www.mof.go.jp/jgbs/reference/interest_rate/index.htm) | 無料 | CSV | 毎日の金利（イールドカーブ）データ。 |
+| [日本銀行：統計データ](https://www.stat-search.boj.or.jp/) | 無料 | Web / CSV | 政策金利、マネタリーベース等のマクロデータ。 |
+
+### 暗号資産 (Crypto)
+
+| 名称 | 区分 | 取得形式 | 特徴 |
+| :--- | :--- | :---: | :--- |
+| [bitFlyer Lightning API](https://lightning.bitflyer.com/docs) | 無料 | REST / WebSocket | 国内大手。板情報、歩み値、注文API。 |
+| [GMOコイン API](https://coin.z.com/jp/member/help/api/) | 無料 | REST / WebSocket | 取引・レート取得。 |
+| [Polymarket](https://docs.polymarket.com/) | 無料 | REST / WebSocket / SDK | 予測市場。Gamma APIで市場メタデータ、Data APIで取引・ポジション等、CLOB APIで板・価格・注文を扱う。日本居住者の利用可否や規制・利用規約は事前確認が必要。 |
+
+### 不動産・J-REIT
+
+| 名称 | 区分 | 取得形式 | 特徴 |
+| :--- | :--- | :---: | :--- |
+| [J-REIT.jp](https://www.j-reit.jp/) | 無料 | Web | 利回り、NAV、物件情報を網羅。 |
+| [不動産情報ライブラリ](https://www.reinfolib.mlit.go.jp/) | 無料 | REST API / CSV | 国交省による成約価格データ（土地総合情報システムの後継）。APIも提供。 |
+| [不動産価格指数 (e-Stat)](https://www.e-stat.go.jp/stat-search/files?page=1&toukei=00600611&tstat=000001091216) | 無料 | REST API / CSV | 全国・地域別の住宅、商業用不動産の価格動向。 |
+
+### 為替 (FX) & マクロ統計
+
+| 名称 | 区分 | 取得形式 | 特徴 |
+| :--- | :--- | :---: | :--- |
+| [e-Stat](https://www.e-stat.go.jp/) | 無料 | REST API / CSV | 日本の全統計データ（人口、物価等）。 |
+| [OANDA Lab](https://www.oanda.jp/lab-education/api/) | 無料(条件有) | REST API | オーダーブック（未決済注文）などの分析。 |
+
+## コモディティ・オルタナティブ
+
+| 名称 | 区分 | 取得形式 | 特徴 |
+| :--- | :--- | :---: | :--- |
+| [田中貴金属](https://gold.tanaka.co.jp/refresh/index.php) | 無料 | Web | 国内金価格の基準。 |
+| [Funds](https://funds.jp/) | 無料 | Web | 貸付型クラウドファンディング（社債代替）。 |
+
+## 総合・便利ツール
+
+| 名称 | 区分 | 取得形式 | 特徴 |
+| :--- | :--- | :---: | :--- |
+| [Google Finance 関数](https://support.google.com/docs/answer/3093281) | 無料 | Spreadsheet関数 | スプレッドシート上での簡易データ取得。 |
+| [MoneyForward ME](https://moneyforward.com/) | 無料 / 有料 | Web / App | 資産の一元管理。 |
+
+---
+
+## 目的別おすすめ
+
+### APIを使って自動化したい
+- **株式**: `J-Quants API` (公式)、または Pythonの `yfinance` 等。
+- **不動産**: `不動産情報ライブラリ` のAPIを利用。
+- **暗号資産**: `bitFlyer` または `GMOコイン` のAPI。
+- **予測市場**: `Polymarket` のGamma/Data/CLOB APIで市場メタデータ、価格、板、取引データを取得。
+- **統計**: `e-Stat API` を利用してマクロ経済指標を取得。
+
+### 無料で視覚的に分析したい
+- **株式・先物**: `バフェット・コード` または `TradingView`。
+- **不動産**: `J-REIT.jp` で利回り比較、`不動産情報ライブラリ` で成約単価を確認。
+
+### 低予算(月2,000円)で一歩先の情報を得たい
+- **J-Quants API**: 個人投資家が公式データを取得する最良の選択肢。
+- **株探プレミアム**: 決算時期の素早い判断や、先物の手口情報の深掘りに。
+
+---
+
+## 免責事項
+本リポジトリに記載されている情報は、投資勧誘を目的としたものではありません。投資に関する最終決定は、ご自身の判断と責任で行ってください。
+
+---
+
+## コントリビューション
+情報の修正や新しいリソースの追加など、プルリクエストをお待ちしています！

@@ -1,0 +1,84 @@
+site_name: Awesome Japan Trade Resources
+site_description: Low-cost data sources and theory notes for Japanese markets.
+site_url: https://asari-mtr.github.io/awesome-japan-trade/
+repo_url: https://github.com/asari-mtr/awesome-japan-trade
+repo_name: asari-mtr/awesome-japan-trade
+edit_uri: edit/main/docs/
+
+docs_dir: docs
+site_dir: site
+
+theme:
+  name: material
+  language: ja
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.top
+    - navigation.indexes
+    - navigation.footer
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.tabs.link
+    - content.action.edit
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-night
+        name: ダークモードへ
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-sunny
+        name: ライトモードへ
+  icon:
+    repo: fontawesome/brands/github
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - footnotes
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.details
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+nav:
+  - ホーム: index.md
+  - 市場構造と高度な分析手法: market_structure.md
+  - 投資スタイル: investment_styles.md
+  - プライシング理論: pricing_theory.md
+  - ポートフォリオ理論: portfolio_theory.md
+  - リスク管理: risk_management.md
+  - レジーム別オプション戦略: option_strategies.md
+  - オプション戦略別Greeks: option_strategy_greeks.md
+  - オプション・バックテスト: option_backtesting.md
+  - ボラティリティ・サーフェス: volatility_surface.md
+  - 米国マクロ指標の影響: us_macro_impact.md
+  - 米国社債・短期金利・イールドカーブ: us_credit_rates.md
+  - 金融サイクルと景気循環: financial_cycles.md
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/asari-mtr/awesome-japan-trade
