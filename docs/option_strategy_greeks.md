@@ -29,6 +29,7 @@ nav_order: 8
 - **Skew risk**: Put側だけが急騰すると、Vega中立に見えるポジションでも損益が崩れる。
 - **Term risk**: Calendar/Diagonalは、期近と期先のIV差が逆方向に動くと想定外の損益になる。
 - **Charm risk**: SQ接近や週末前後に、時間経過だけでDeltaが変化する。
+- **Volga / Vomma risk**: IVが急変したとき、VegaそのものがIVに対して非線形に変化する。ATMから離れたOTMオプションはVolgaが大きく、IV急騰時に想定以上にプレミアムが膨らむ。Short Straddle / Short Strangleでショートしているとき、IV急騰→Volga発動で損失が二次曲線的に拡大しやすい。
 
 ## 3. 戦略評価の順序
 
