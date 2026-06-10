@@ -18,17 +18,17 @@ Volatility Surfaceは、権利行使価格方向のSmile/Skewと、限月方向�
 
 ## 2. Skew / Smileの定量指標
 
-- **25Δ Risk Reversal**: 25Δ Call IV - 25Δ Put IV。マイナスが大きいほどPut側のヘッジ需要が強い。
-- **25Δ Butterfly**: 25Δ Call IVと25Δ Put IVの平均 - ATM IV。テールの厚さを見る。
+- **25Δ Risk Reversal**: 25Δ Call IV − 25Δ Put IV。株価指数では通常マイナスで、マイナスが大きいほどPut側のヘッジ需要が強い。
+- **25Δ Butterfly**: (25Δ Call IV + 25Δ Put IV) / 2 − 50Δ (ATM) IV。Smileの曲率、すなわち市場が織り込む分布のテールの厚さを見る。
 - **Put Skew**: OTM Put IV - ATM IV。クラッシュヘッジ需要の強さを見る。
 - **Call Skew**: OTM Call IV - ATM IV。踏み上げや上方向イベントの価格付けを見る。
 
 ## 3. Realized Volatility vs Implied Volatility
 
-IVは市場価格から逆算される将来変動の価格、RVは実際に観測された過去の変動。
+IV (Implied Volatility) はオプション市場価格から逆算される将来変動の価格、RV (Realized Volatility) は実際に観測された過去の変動。いずれも年率換算で比較する（日次対数リターンの標準偏差なら $\sqrt{252}$ 倍）。
 
-- **IV-RV spread**: IV - RV。オプション売り/買いの期待値を見る基本指標。
-- **Volatility Risk Premium (VRP)**: 投資家が保険料として支払うIVの上乗せ部分。平常時はIVがRVを上回りやすいが、ショック時はRVが急上昇する。
+- **IV-RV spread**: IV − RV。オプション売り/買いの期待値を見る基本指標。事前指標としては「現在のIV − 直近の過去RV」、事後検証では「エントリー時IV − その後の同一期間のRV」を区別する。
+- **Volatility Risk Premium (VRP)**: 投資家が保険料として支払うIVの上乗せ部分。平常時はIVがその後実現するRVを上回りやすいが、ショック時はRVがIVを超えて急上昇し、売り手の損失が集中する。
 - **IV Rank**: 過去一定期間のIVレンジ内で現在IVがどの位置にあるか。
 - **IV Percentile**: 過去一定期間で現在IV以下だった日の割合。
 
@@ -38,8 +38,9 @@ IVは市場価格から逆算される将来変動の価格、RVは実際に観�
 
 $$\sigma_{\text{fwd}} \approx \sqrt{\frac{\sigma_2^2 \, T_2 - \sigma_1^2 \, T_1}{T_2 - T_1}}$$
 
-- $\sigma_1, T_1$: 期近IVと満期までの年数。
-- $\sigma_2, T_2$: 期先IVと満期までの年数。
+- $\sigma_1, T_1$: 期近ATM IVと満期までの年数。
+- $\sigma_2, T_2$: 期先ATM IVと満期までの年数（$T_1 < T_2$）。
+- **前提**: 総分散の加法性（期間 $[0, T_2]$ の分散 = $[0, T_1]$ + $[T_1, T_2]$ の分散の和）。$\sigma_2^2 T_2 < \sigma_1^2 T_1$ のときは根号内が負となり、カレンダー裁定（またはデータ不整合）を示唆する。
 - **用途**: Calendar spread、イベント期間の割高/割安、期近IVだけが盛っているかの確認。
 
 ## 5. Event Volatility

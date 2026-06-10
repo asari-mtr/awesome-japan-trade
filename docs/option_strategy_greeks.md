@@ -19,8 +19,11 @@ nav_order: 8
 | **Short Strangle** | 中立寄り | - | - | + | 高IVレンジ |
 | **Iron Condor** | 中立寄り | - | - | + | 高IVレンジ、損失限定 |
 | **Long Straddle** | 中立開始 | + | + | - | 方向不明の大変動 |
-| **Calendar Spread** | 近ATMで中立寄り | 期近に依存 | +寄り | +寄り | 期先保有、期近売り |
-| **Butterfly** | 中心価格次第 | 中心付近で-になりやすい | -寄り | +寄り | SQ着地狙い |
+| **Calendar Spread** | 近ATMで中立寄り | ATM付近で-（期近売りが支配） | +寄り | +寄り | 期先保有、期近売り |
+| **Long Butterfly** | 中心価格次第 | 中心付近で-になりやすい | -寄り | +寄り | SQ着地狙い |
+
+- 符号はポジション組成時のATM付近を想定した典型値。CDS/PDSのGamma・Vegaの符号は、原資産価格が買い行使価格と売り行使価格のどちらに近いかで反転する。
+- Vegaは「IVが1%ポイント上昇したときの損益」、Thetaは「カレンダー1日経過あたりの損益」を指す。
 
 ## 2. 見落としやすいリスク
 
@@ -28,8 +31,8 @@ nav_order: 8
 - **Vega risk**: IV低下を期待して売った戦略でも、相場急変でIVが上がると損失が膨らむ。
 - **Skew risk**: Put側だけが急騰すると、Vega中立に見えるポジションでも損益が崩れる。
 - **Term risk**: Calendar/Diagonalは、期近と期先のIV差が逆方向に動くと想定外の損益になる。
-- **Charm risk**: SQ接近や週末前後に、時間経過だけでDeltaが変化する。
-- **Volga / Vomma risk**: IVが急変したとき、VegaそのものがIVに対して非線形に変化する。VommaはATM付近でほぼゼロで、OTM方向に離れるにつれ大きくなるが、深いOTMではVega自体が低下するため再び小さくなる（山型）。IV急騰時に影響が大きいのはATMからある程度離れたOTM帯のオプション。Short Straddle / Short Strangleでショートしているとき、IV急騰→Volga発動で損失が二次曲線的に拡大しやすい。
+- **Charm risk**: SQ接近や週末前後に、時間経過だけでDeltaが変化する（Charm $= \partial \Delta / \partial t$）。残存日数が短いOTM/ITMオプションほど影響が大きい。
+- **Volga / Vomma risk**: IVが急変したとき、VegaそのものがIVに対して非線形に変化する（Volga $= \partial^2 V / \partial \sigma^2 = \partial \text{Vega} / \partial \sigma$）。VommaはATM付近でほぼゼロで、OTM方向に離れるにつれ大きくなるが、深いOTMではVega自体が低下するため再び小さくなる（山型）。IV急騰時に影響が大きいのはATMからある程度離れたOTM帯のオプション。Short Straddle / Short StrangleでOTMをショートしているとき、IV急騰時にはVolga効果で損失がIV変化に対して凸（加速度的）に拡大しやすい。
 
 ## 3. 戦略評価の順序
 

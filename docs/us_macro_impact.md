@@ -9,10 +9,10 @@ nav_order: 5
 日本株は米国の経済指標や金利動向から多大な影響を受けますが、その相関や方向性はマクロ環境や為替局面、業種構成によって動的に変化します。
 
 ## 1. 米国金利 (US Interest Rates)
-米国の政策金利（FFレート）および長期金利（10年債利回）は、日本株に主に2つの相反するルートで影響を与えます。
+米国の政策金利（FF金利＝フェデラルファンド金利の誘導目標レンジ。FRB＝米連邦準備制度理事会が決定）および長期金利（米10年国債利回り）は、日本株に主に2つの相反するルートで影響を与えます。
 
 ### 通貨（ドル円）ルート
-- **金利差拡大（米金利上昇）**: ドル買い・円売りを誘発し、円安が進行。トヨタなどの輸出企業の利益押し上げ要因となり、日経平均にポジティブに働くことが多い。
+- **金利差拡大（米金利上昇）**: 日米金利差の拡大はドル買い・円売りを誘発しやすく、円安が進行した場合はトヨタなどの輸出企業の利益押し上げ要因となり、日経平均にポジティブに働くことが多い。ただし為替は金利差以外（経常収支、リスク回避の円買い、当局の介入観測など）にも左右される。
 - **金利差縮小（米金利低下）**: 円高を誘発。輸出企業の収益悪化懸念から、日本株の重石となる。
 
 ### 割引率ルート
@@ -24,8 +24,9 @@ nav_order: 5
 - **日本株への波及**は、ドル円、米株指数、半導体サイクル、商品価格を経由するため、単一指標で説明しない。
 
 ## 2. 米雇用統計 (US Employment Statistics)
-非農業部門雇用者数 (NFP) と失業率は、米国景気の「体温計」として世界的なリスクオン・リスクオフを左右します。
+非農業部門雇用者数 (Nonfarm Payrolls, NFP) と失業率は、米国景気の「体温計」として世界的なリスクオン・リスクオフを左右します。
 
+- **発表元・頻度**: 米労働省労働統計局 (BLS) が月次で公表する「Employment Situation」。
 - **発表時期**: 通常は月初（第1金曜日であることが多い）に発表されますが、祝日や政府スケジュールにより変動します。正確な日程は [BLS Employment Situation Schedule](https://www.bls.gov/schedule/news_release/empsit.htm) を確認する必要があります。
 - **市場の反応**: 景気の強弱に加え、インフレ懸念や金利見通しとの兼ね合いで複雑な動きを見せ、ボラティリティが最大化するイベントです。
 
@@ -37,8 +38,8 @@ nav_order: 5
 ## 3. 米CPI・PCE
 インフレ指標は、金利見通し、ドル円、グロース株のバリュエーションに影響する。
 
-- **CPI**: 市場インパクトが大きい。ヘッドラインとコア、住居費、サービス価格を分けて見る。
-- **PCEデフレーター**: FRBが重視するインフレ指標。CPIより遅れて発表されるが、政策見通しには重要。
+- **CPI（消費者物価指数）**: 米労働省労働統計局 (BLS) が月次で公表。市場インパクトが大きい。ヘッドラインとコア、住居費、サービス価格を分けて見る。
+- **PCEデフレーター（個人消費支出物価指数）**: 米商務省経済分析局 (BEA) が月次で公表。FRBがインフレ目標（前年比2%）の基準とする指標で、特にコアPCEが注目される。同月分のCPIより遅れて発表されるが、政策見通しには重要。
 - **日本株への影響**: 高インフレが金利上昇を通じてハイテク株に逆風となる一方、円安を通じて輸出株の利益期待を押し上げる場合がある。
 
 ## 4. センチメント・予測指標
@@ -46,22 +47,22 @@ nav_order: 5
 
 | 名称 | 特徴 | リンク |
 | :--- | :--- | :--- |
-| **CME FedWatch** | 市場が織り込んでいる将来の政策金利（利上げ・利下げ）の確率。 | [CME FedWatch Tool](https://www.cmegroup.com/markets/interest-rates/cme-fedwatch-tool.html) |
+| **CME FedWatch** | FF金利先物の価格から逆算した、市場が織り込む将来の政策金利（利上げ・利下げ）の確率。 | [CME FedWatch Tool](https://www.cmegroup.com/markets/interest-rates/cme-fedwatch-tool.html) |
 | **NAAIM Exposure Index** | 米国のアクティブ運用マネージャーの平均的な株式投資比率。センチメントの把握に。 | [NAAIM Exposure Index](https://www.naaim.org/programs/naaim-exposure-index/) |
 | **FRED (St. Louis Fed)** | 米国の金利、CPI、雇用統計等のヒストリカルデータ。 | [FRED Web](https://fred.stlouisfed.org/) |
 | **OGE Financial Disclosures** | 米国政府高官（大統領等）の資産公開情報。債券や株式の売買動向を把握可能。 | [OGE.gov - Open Data](https://www.oge.gov/web/oge.nsf/Open+Data) |
 
 ## 5. 主要な参照ソース
 - **Investing.com**: [経済指標カレンダー](https://jp.investing.com/economic-calendar/)。予測と実績の乖離確認。
-- **BLS (米国労働省統計局)**: [BLS.gov](https://www.bls.gov/)。雇用統計の一次情報。
-- **U.S. Office of Government Ethics (OGE)**: [Official Financial Disclosures](https://www.oge.gov/web/oge.nsf/Financial+Disclosure)。公職者の資産報告書（Form 278等）の閲覧。
+- **BLS (米労働省労働統計局, U.S. Bureau of Labor Statistics)**: [BLS.gov](https://www.bls.gov/)。雇用統計・CPIの一次情報。
+- **U.S. Office of Government Ethics (OGE, 米政府倫理局)**: [Official Financial Disclosures](https://www.oge.gov/web/oge.nsf/Financial+Disclosure)。公職者の資産報告書（Form 278等）の閲覧。
 
 ---
 
 ## 日本株投資家が注視すべきサイクル
 1. **米雇用統計**: 米景気の確認。
 2. **米CPI（消費者物価指数）**: インフレ動向と将来の金利予測。
-3. **FOMC（米連邦公開市場委員会）**: 政策金利の決定。
+3. **FOMC（米連邦公開市場委員会）**: 政策金利の決定。年8回の定例会合のほか、四半期ごとに経済見通し（SEP、いわゆるドットチャート）を公表。
 
 ## 分析時の実務チェック
 - 発表前のコンセンサス、実績、改定値を分けて保存する。

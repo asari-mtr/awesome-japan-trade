@@ -78,6 +78,7 @@ nav:
   - 米国マクロ指標の影響: us_macro_impact.md
   - 米国社債・短期金利・イールドカーブ: us_credit_rates.md
   - 金融サイクルと景気循環: financial_cycles.md
+  - クオンツトレード基礎: quant_trading.md
 
 extra:
   social:

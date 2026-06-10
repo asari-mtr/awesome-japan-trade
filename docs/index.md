@@ -20,6 +20,7 @@
 | [米国社債・短期金利・イールドカーブ](us_credit_rates.md) | 社債、信用スプレッド、短期金利、10Y-2Y、イールドカーブ |
 | [投資スタイル](investment_styles.md) | モメンタム、バリュー、クオンツ、ファクター投資 |
 | [金融サイクルと景気循環](financial_cycles.md) | 金利、債券、不動産、株式、先進国/新興国/日本の循環 |
+| [クオンツトレード基礎](quant_trading.md) | 確率過程、GBM、GARCH、OU過程、シグナル構築、バックテスト |
 
 ---
 
@@ -32,7 +33,7 @@
 
 | プラン | 取得可能な主なデータ | 期間 / 制限 |
 | :--- | :--- | :--- |
-| **Free** | 銘柄一覧、株価四本値、財務情報、決算発表予定日など | 直近約2年強のデータが中心 |
+| **Free** | 銘柄一覧、株価四本値、財務情報、決算発表予定日など | 約2年分（直近データは遅延配信） |
 | **Light** | Free対象データ + 取引カレンダー、投資部門別情報、TOPIX四本値など | 約5年前まで |
 | **Standard**| Light対象データ + 指数四本値、日経225オプション四本値、信用・空売り関連など | 約10年前まで |
 | **Premium** | Standard対象データ + 先物・オプション四本値、配当金情報、財務諸表(BS/PL/CF)など | 2008年以降など、データ種別により異なる |
@@ -49,7 +50,7 @@
 | :--- | :--- | :--- |
 | **財務諸表** | B/S, P/L, C/F, 純資産変動計算書 | XBRL / PDF |
 | **非財務情報** |経営方針、事業のリスク、従業員の状況 | テキスト / PDF |
-| **提出書類** | 有価証券報告書、四半期報告書、大量保有報告書 | API / Web |
+| **提出書類** | 有価証券報告書、半期報告書、大量保有報告書など（四半期報告書は2024年4月に廃止。過去分は閲覧可） | API / Web |
 
 - **コスト**: 完全無料
 - **強み**: **XBRL形式**をパースすれば、数千社の財務比較を自動化できる。APIで書類一覧とバイナリが取得可能。
@@ -101,6 +102,7 @@
 - [米国社債・短期金利・イールドカーブ](us_credit_rates.md) : 社債スプレッド、短期金利、10Y-2Yと市場への影響
 - [投資スタイル](investment_styles.md) : モメンタム、バリュー、クオンツ、ファクター投資
 - [金融サイクルと景気循環](financial_cycles.md) : 金利、債券、不動産、株式、国別サイクルのズレ
+- [クオンツトレード基礎](quant_trading.md) : 確率過程、GBM、GARCH、OU過程、シグナル構築、バックテスト
 
 ---
 
@@ -124,7 +126,7 @@
 | [JPX：部門別売買動向](https://www.jpx.co.jp/markets/statistics-derivatives/sector/) | 無料 | CSV / XLS | 海外投資家等の売買越状況と建玉。週次更新。2026年4月以降の新フォーマットもCSV/Excelサンプルあり。 |
 | [JPX：清算数値一覧](https://www.jpx.co.jp/markets/derivatives/settlement-price/index.html) | 無料 | CSV | 先物・オプションの清算値、理論価格、IV等。営業日夕方にCSV公開。 |
 | [JPX：最終清算数値（SQ）](https://www.jpx.co.jp/markets/derivatives/special-quotation/index.html) | 無料 | Web / CSV等 | 日経225、TOPIX等のSQ値とヒストリカルデータ。 |
-| [日経平均VI (ボラティリティ)](https://indexes.nikkei.co.jp/nkave/index/profile?idx=nk225vi) | 無料 | CSV | 投資家の恐怖心理を数値化。過去CSVが取得可能。 |
+| [日経平均VI (ボラティリティ)](https://indexes.nikkei.co.jp/nkave/index/profile?idx=nk225vi) | 無料 | CSV | 日経225オプション価格から算出される予想変動率指数（日本経済新聞社）。過去CSVが取得可能。 |
 | [JSCC：証拠金情報（SPAN/VaR）](https://www.jpx.co.jp/jscc/seisan/sakimono/shokokin_seido/shokokin.html) | 無料 | CSV / XLS等 | 先物・オプションの維持証拠金計算パラメータ。 |
 | [TradingView (OSEデータ)](https://jp.tradingview.com/) | 無料 / 有料 | Web / API | 大阪取引所(OSE)の先物データを高機能チャートで分析。API利用条件はプランと規約に依存。 |
 
@@ -133,7 +135,7 @@
 
 | 名称 | 区分 | 取得形式 | 特徴 |
 | :--- | :--- | :---: | :--- |
-| [Wealth Advisor](https://www.wealthadvisor.co.jp/) | 無料 | Web | 投信格付け、コスト、パフォーマンス比較。 |
+| [Wealth Advisor](https://www.wealthadvisor.co.jp/) | 無料 | Web | 旧モーニングスター。投信のレーティング、コスト、パフォーマンス比較。 |
 | [投信協会](https://www.toushin.or.jp/search/fund/) | 無料 | Web / PDF | 全投資信託の目論見書・運用報告書。 |
 
 ### 国債・金利
@@ -141,7 +143,7 @@
 | 名称 | 区分 | 取得形式 | 特徴 |
 | :--- | :--- | :---: | :--- |
 | [財務省：国債金利](https://www.mof.go.jp/jgbs/reference/interest_rate/index.htm) | 無料 | CSV | 毎日の金利（イールドカーブ）データ。 |
-| [日本銀行：統計データ](https://www.stat-search.boj.or.jp/) | 無料 | Web / CSV | 政策金利、マネタリーベース等のマクロデータ。 |
+| [日本銀行：時系列統計データ検索サイト](https://www.stat-search.boj.or.jp/) | 無料 | Web / CSV | 政策金利、マネタリーベース等のマクロ時系列データ。 |
 
 ### 暗号資産 (Crypto)
 
@@ -156,7 +158,7 @@
 | 名称 | 区分 | 取得形式 | 特徴 |
 | :--- | :--- | :---: | :--- |
 | [J-REIT.jp](https://www.j-reit.jp/) | 無料 | Web | 利回り、NAV、物件情報を網羅。 |
-| [不動産情報ライブラリ](https://www.reinfolib.mlit.go.jp/) | 無料 | REST API / CSV | 国交省による成約価格データ（土地総合情報システムの後継）。APIも提供。 |
+| [不動産情報ライブラリ](https://www.reinfolib.mlit.go.jp/) | 無料 | REST API / CSV | 国土交通省による不動産取引価格・成約価格データ（土地総合情報システムの後継）。APIも提供。 |
 | [不動産価格指数 (e-Stat)](https://www.e-stat.go.jp/stat-search/files?page=1&toukei=00600611&tstat=000001091216) | 無料 | REST API / CSV | 全国・地域別の住宅、商業用不動産の価格動向。 |
 
 ### 為替 (FX) & マクロ統計
@@ -170,14 +172,14 @@
 
 | 名称 | 区分 | 取得形式 | 特徴 |
 | :--- | :--- | :---: | :--- |
-| [田中貴金属](https://gold.tanaka.co.jp/refresh/index.php) | 無料 | Web | 国内金価格の基準。 |
+| [田中貴金属](https://gold.tanaka.co.jp/refresh/index.php) | 無料 | Web | 国内の金・貴金属の店頭小売価格の代表的な参考値。日次価格を公表。 |
 | [Funds](https://funds.jp/) | 無料 | Web | 貸付型クラウドファンディング（社債代替）。 |
 
 ## 総合・便利ツール
 
 | 名称 | 区分 | 取得形式 | 特徴 |
 | :--- | :--- | :---: | :--- |
-| [Google Finance 関数](https://support.google.com/docs/answer/3093281) | 無料 | Spreadsheet関数 | スプレッドシート上での簡易データ取得。 |
+| [Google Finance 関数](https://support.google.com/docs/answer/3093281) | 無料 | Spreadsheet関数 | スプレッドシート上での簡易データ取得。配信は遅延があり、リアルタイム取引用途には不向き。 |
 | [MoneyForward ME](https://moneyforward.com/) | 無料 / 有料 | Web / App | 資産の一元管理。 |
 
 ---

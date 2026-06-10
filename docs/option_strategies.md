@@ -12,7 +12,7 @@ nav_order: 6
 
 | レジーム | 特徴 | 注視指標 |
 | :--- | :--- | :--- |
-| **低IV・レンジ相場** | 実現ボラティリティが低く、指数が狭い範囲で推移 | IV rank、実現ボラ、GEX、出来高 |
+| **低IV・レンジ相場** | 実現ボラティリティ (RV) が低く、IVも低位で、指数が狭い範囲で推移 | IV Rank、RV、GEX、出来高 |
 | **高IV・イベント前** | CPI、FOMC、日銀会合、SQ前などでIVが上昇 | IV term structure、イベント日、ATM straddle |
 | **高IV・ショック後** | 急落後にIVが高止まりし、Skewが急拡大 | Put skew、VIX/日経VI、先物ベーシス |
 | **トレンド相場** | 方向性が強く、押し目・戻りが浅い | DEX、GEX flip、移動平均、投資家別売買 |
@@ -28,22 +28,22 @@ nav_order: 6
 | **PDS (Put Debit Spread)** | 高い権利行使価格のPut買い + 低い権利行使価格のPut売り | 下落方向を限定リスクで取りたい局面 | 下値が売り行使価格で頭打ち |
 | **Iron Condor** | OTM Call spread売り + OTM Put spread売り | 高IV・レンジ想定 | 片側ブレイク、Gamma急増 |
 | **Short Strangle** | OTM Call売り + OTM Put売り | 高IV・レンジ想定、十分な証拠金 | テール損失、追証、流動性低下 |
-| **Long Straddle / Strangle** | Call買い + Put買い | 低IV・イベント前、方向不明の大変動狙い | IV crush、Theta負け |
+| **Long Straddle / Strangle** | 同一行使価格 (ATM) のCall買い + Put買い / OTM Call買い + OTM Put買い | 低IV・イベント前、方向不明の大変動狙い | IV crush、Theta負け |
 | **Calendar Spread** | 期近売り + 期先買い | 期近IVが割高、またはTerm差を取りたい局面 | Term structure変化、期近Gamma |
 | **Diagonal Spread** | 限月と行使価格をずらすスプレッド | 方向性 + Term差を同時に取りたい局面 | Delta/Vega/Thetaの複合リスク |
-| **Butterfly** | 中心行使価格を厚くした限定リスク戦略 | SQ着地価格を狙う局面 | ピンポイント性、流動性 |
+| **Butterfly (Long)** | 中心行使価格を2枚売り、上下の行使価格を1枚ずつ買う限定リスク戦略 | SQ着地価格を狙う局面 | ピンポイント性、流動性 |
 
 ## 3. レジーム別の使い分け
 
 ### 低IV・ブレイク待ち
 - **候補**: Long straddle、Long strangle、CDS、PDS。
 - **狙い**: IVが安い局面で、方向性または大きな変動を買う。
-- **注意**: 低IVが長く続くとThetaで削られる。エントリー前にCatalystを確認する。
+- **注意**: ロングオプションのThetaは負であり、低IVが長く続くと時間価値の減価で削られる。エントリー前にCatalystを確認する。
 
 ### 高IV・レンジ想定
 - **候補**: Iron condor、short strangle、credit spread。
 - **狙い**: 高いオプションプレミアムを売り、時間価値の減少を取る。
-- **注意**: 高IVは「危険が高いから高い」場合がある。裸売りではなく、損失限定のspreadを優先する。
+- **注意**: 高IVは市場が実際に高いRVを織り込んでいる場合があり、IV − RVスプレッドが見かけほどの期待値を意味しない。裸売りではなく、損失限定のspreadを優先する。
 
 ### 上昇トレンド
 - **候補**: CDS、call diagonal、put credit spread。
@@ -63,7 +63,7 @@ nav_order: 6
 ## 4. 戦略選択のチェックリスト
 
 - **方向性**: 上、下、レンジ、方向不明のどれを取りたいか。
-- **IV水準**: IVは過去比で高いか低いか。買うべきか売るべきか。
+- **IV水準**: IVは過去比 (IV Rank / IV Percentile) で高いか低いか。RVとの差はどうか。買うべきか売るべきか。
 - **Skew**: Put側とCall側のどちらが割高か。
 - **Term Structure**: 期近と期先のどちらが割高か。
 - **Greeks**: Delta、Gamma、Vega、Theta、Charmがどこに集中しているか。
